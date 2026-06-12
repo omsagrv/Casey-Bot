@@ -51,8 +51,14 @@ def detectar_gore(msg):
     # Aquí irá tu lógica futura con Gemini
     return True 
 
-if __name__ == "__main__":
-    # Si Railway no asigna un puerto, usamos 8080 como respaldo.
-    # Pero si asigna uno, lo usamos obligatoriamente.
-    port = int(os.environ.get("PORT", 8080))
-    app.run(host='0.0.0.0', port=port)
+# entrypoint.sh
+#!/bin/bash
+set -e
+echo "🚀 Iniciando en puerto: $PORT"
+exec gunicorn --bind "0.0.0.0:${PORT:-8080}" \
+     --workers 2 \
+     --timeout 120 \
+     --log-level debug \
+     --access-logfile - \
+     --error-logfile - \
+     main:app
