@@ -9,7 +9,7 @@ app = Flask(__name__)
 GEMINI_KEY = os.getenv("GOOGLE_API_KEY")
 EVOLUTION_API_URL = os.getenv("EVOLUTION_API_URL")
 EVOLUTION_API_KEY = os.getenv("EVOLUTION_API_KEY")
-INSTANCE_NAME = "Casey Bot" # Asegúrate de poner el nombre de tu instancia aquí
+INSTANCE_NAME = "Casey-Bot" # Asegúrate de poner el nombre de tu instancia aquí
 
 if GEMINI_KEY:
     genai.configure(api_key=GEMINI_KEY)
