@@ -1,3 +1,4 @@
+app = Flask(__name__)
 import os
 import logging
 from flask import Flask, request, jsonify
