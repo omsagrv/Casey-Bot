@@ -53,5 +53,4 @@ def detectar_gore(msg):
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
-    print(f"Intentando iniciar en puerto {port}...") # Esta línea nos dirá si arranca
     app.run(host='0.0.0.0', port=port)
