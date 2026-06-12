@@ -52,7 +52,7 @@ def detectar_gore(msg):
     return True 
 
 if __name__ == "__main__":
-    # Obtenemos el puerto de la variable de entorno, 
-    # si no existe, usamos el puerto 0 (esto le dice al sistema que elija CUALQUIER puerto libre automáticamente)
-    port = int(os.environ.get("PORT", 0))
+    # Si Railway no asigna un puerto, usamos 8080 como respaldo.
+    # Pero si asigna uno, lo usamos obligatoriamente.
+    port = int(os.environ.get("PORT", 8080))
     app.run(host='0.0.0.0', port=port)
