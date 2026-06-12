@@ -52,7 +52,7 @@ def detectar_gore(msg):
     return True 
 
 if __name__ == "__main__":
-    # Forzamos a que tome el puerto de la variable de entorno, 
-    # y si no existe, que el sistema operativo elija uno libre (0)
+    # Obtenemos el puerto de la variable de entorno, 
+    # si no existe, usamos el puerto 0 (esto le dice al sistema que elija CUALQUIER puerto libre automáticamente)
     port = int(os.environ.get("PORT", 0))
     app.run(host='0.0.0.0', port=port)
