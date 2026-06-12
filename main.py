@@ -52,7 +52,6 @@ def detectar_gore(msg):
     return True 
 
 if __name__ == "__main__":
-    # Si Railway te asigna un puerto, úsalo. Si no, usa el 8080.
     port = int(os.environ.get("PORT", 8080))
-    # '0.0.0.0' le dice que escuche en todas las interfaces de red
+    print(f"Intentando iniciar en puerto {port}...") # Esta línea nos dirá si arranca
     app.run(host='0.0.0.0', port=port)
