@@ -1,9 +1,23 @@
 import os
-import google.generativeai as genai
-from flask import Flask, request
-import requests
+import logging
+from flask import Flask, request, jsonify
+
+# Esto hará que lo que pase en el bot aparezca en la consola de Railway
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
+
+@app.route('/health', methods=['GET'])
+def health():
+    return jsonify({"status": "ok"}), 200
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    logger.info("¡Webhook recibido!") # Si ves esto en la consola, ¡ganamos!
+    data = request.get_json(silent=True)
+    logger.info(f"Datos recibidos: {data}")
+    return jsonify({"status": "received"}), 200
 
 # Configuración desde variables de entorno (Railway)
 GEMINI_KEY = os.getenv("GOOGLE_API_KEY")
